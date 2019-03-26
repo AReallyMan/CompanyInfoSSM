@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.PersonMapper">
+<resultMap type="com.ssm.entity.NbaPerson" id="withdeptResultMap">
+  	<id column="id" jdbcType="INTEGER" property="id" />
+  	<!-- <result column="id" jdbcType="INTEGER" property="id" /> -->
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="team_id" jdbcType="INTEGER" property="team_id" />
+    <association property="nbaTeam" javaType="com.ssm.entity.NbaTeam">
+    	<id column="team_id" property="team_id"/>
+    	<result column="team_name" property="team_name"/>
+    </association>
+  </resultMap>
+	<update id="editPerson" parameterType="com.ssm.entity.NbaPerson">
+		update nba_info set name=#{name},height=#{height},address=#{address},
+							 age=#{age},email=#{email},team_id=#{team_id}
+							 where id=#{id}
+	</update>
+	
+	 <insert id="addPerson" parameterType="com.ssm.entity.NbaPerson">
+   		 insert into nba_info (name, height,address,age, email, team_id)
+    	 values (#{name},#{height},#{address}, #{age}, #{email}, #{team_id})
+  	</insert>
+  	<select id="queryAdmin" resultType="com.ssm.entity.NbaAdmin" parameterType="com.ssm.entity.NbaAdmin">
+  		SELECT * FROM admin where name=#{name} and password=#{password}
+  	</select>
+  	<select id="queryAll1" resultType="com.ssm.entity.NbaPerson">
+  		<!--  select * from nba_info  -->
+  		 SELECT a.id,a.name,a.height,a.address,a.age,a.email,a.team_id,b.team_id,b.team_name FROM nba_info a
+		LEFT JOIN nba_team b
+		ON a.team_id=b.team_id
+  	</select>
+  	<select id="queryAll" resultMap="withdeptResultMap">
+  		SELECT a.id,a.name,a.height,a.address,a.age,a.email,a.team_id,b.team_id,b.team_name FROM nba_info a
+		LEFT JOIN nba_team b
+		ON a.team_id=b.team_id 
+		order by id asc
+  	</select>
+  	<select id="queryDept" resultType="com.ssm.entity.NbaTeam">
+  		select * from nba_team
+  	</select>
+  	<delete id="delPerson" parameterType="int">
+  		delete from nba_info where id=#{id}
+  	</delete>
+  	<select id="queryAllById" parameterType="int" resultType="com.ssm.entity.NbaPerson">
+  		select * from nba_info  where id=#{id}
+  	</select>
+</mapper>

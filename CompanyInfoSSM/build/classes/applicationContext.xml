@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+<context:annotation-config/>
+<!-- 扫描service -->
+<context:component-scan base-package="com.ssm.service"/>
+<!-- 读取数据源配置文件 -->
+<!-- <context:property-placeholder location="classpath:db.properties"/> -->
+<bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+	<property name="locations">
+		<array>
+			<value>classpath:db.properties</value>		
+		</array>
+	</property>
+</bean>
+<!-- 数据源的配置 -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="${driver}"></property>
+	<property name="url" value="${url}"></property>
+	<property name="password" value="${password}"></property>
+	<property name="username" value="${username}"></property>
+</bean>
+<!-- 与mybatis的整合 -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- 读取mybatis的xml文件，注入配置源dataSource -->
+	<property name="typeAliasesPackage" value="com.ssm.entity"></property>
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="mapperLocations" value="classpath:com/ssm/mapper/*.xml"></property>
+	<property name="plugins">
+<array>
+<bean class="com.github.pagehelper.PageInterceptor">
+<property name="properties">
+<value>
+helperDialect=mysql
+reasonable=true
+autoRuntimeDialect=true
+</value>
+</property>
+</bean>
+</array>
+</property>
+</bean>
+<!-- 扫描mapper文件所在的包 -->
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<property name="basePackage" value="com.ssm.mapper"></property>
+</bean>
+</beans>

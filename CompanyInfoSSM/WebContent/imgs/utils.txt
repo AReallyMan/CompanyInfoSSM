@@ -1,0 +1,30 @@
+（数据库的存储过程,mybatis中涉及，还没搞懂注意！）
+一个map虽热说他是一个集合，可以放多个元素，可放的是一个对象的多个元素，例如一个学生，多个属性，HashMap<String,Object>如果想放多个用List<HashMap<String,Object>>
+http://how2j.cn/k/ssm/ssm-tutorial/1137.html  还可以
+how2j.cn
+https://blog.csdn.net/q982151756  一个人的博客笔记
+http://www.jq22.com/webqd1623     
+jQuery插件库
+https://blog.csdn.net/yin767833376/article/details/51895097   druid
+菜鸟教程
+easyicon
+码码在线http://www.aiprogram.top/courses/14/93
+https://blog.csdn.net/sinat_38259539/article/details/71799078 
+https://blog.csdn.net/vikeyyyy/article/details/79083097   反射
+反射,注解DI
+切面编程AOP
+https://www.nowcoder.com/test/2238/summary   牛客网自我评估
+https://www.cnblogs.com/ysocean/p/6555373.html  别人的博客知识挺全
+http://www.cnblogs.com/annsshadow/p/5037667.html  数据库
+https://blog.csdn.net/qq598535550/article/details/51703190手把手教你整合最优雅SSM框架：SpringMVC + Spring + MyBatis
+https://blog.csdn.net/MEIZU12138/article/details/83754175?tdsourcetag=s_pctim_aiomsg适合初学者的入门级springmvc和mybatis的一个例子
+https://blog.csdn.net/CSDN_fzs/article/details/78984845 大数据
+https://blog.csdn.net/qq_43652509/article/details/84755072  设计模式
+https://blog.csdn.net/u010452388/article/details/80723550  databaseservlet
+为了能更好的进入企业和进入更好的企业，你还必须了解当下最流行的技术。
+
+大数据相关：大数据已成为IT全内的朝阳行业，很多公司的后端工程师和大数据工程师是不分岗的。因为了解点大数据相关技术可以帮助你快速拿到offer。具体如（Hadoop、Spark、Storm）
+
+微服务相关内容：微服务是目前后端技术圈内的最热的名词，而且已经热了好多年。想成为一个好的Java工程师，一定要了解点微服务相关的技术内容。（Dubbo、Spring Cloud）
+
+基础决定你能走多远，深度决定你能走多高，广度决定你能看多远。另外关于这些内容行业的前辈们都帮我们踩过坑，没必要自己再去踩一遍。通过网络或者线下培训的方式都会获得很多资源。

@@ -3,13 +3,6 @@ package com.ssm.entity;
 public class NbaTeam {
 	private int team_id;
 	private String team_name;
-	private NbaTeam nbaTeam;
-	public NbaTeam getNbaTeam() {
-		return nbaTeam;
-	}
-	public void setNbaTeam(NbaTeam nbaTeam) {
-		this.nbaTeam = nbaTeam;
-	}
 	public NbaTeam() {
 		super();
 		// TODO Auto-generated constructor stub

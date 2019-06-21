@@ -15,7 +15,11 @@
 <body style="background: url(imgs/timg11.jpg)">
 <div class="row">
 		<div class="col-md-offset-1">
-			<h1>球员详细信息-NBA</h1>
+			<h1>员工详细信息-公司内部</h1>
+		</div>
+		<div style="float: right">
+		<a href="http://localhost:8080/CompanyInfoSSM/"><button class="btn btn-warning btn-lg active btn btn-primary btn-lg " >退出</button></a>
+		<a href="http://localhost:8080/CompanyInfoSSM/info.html"><button class="btn btn-warning btn-lg active btn btn-primary btn-lg " >变动预览表</button></a>
 		</div>
 	</div>
 
@@ -118,7 +122,7 @@
 		//抽取的方法，单击则去相应的页码数页面
 		function to_page(pn){
 			$.ajax({
-				url:"${app_path}/json",
+				url:"${app_path}/view/json",
 				type:"GET",
 				data:"pn="+pn,
 				success:function(result){
@@ -178,7 +182,7 @@
 	 	//2解析分页条里数据的方法
 		function bulid_page_left(result){
 			$("#table_page_left").empty();
-	 		$("#table_page_left").append("当前第"+result.extend.pageInfo.pageNum+"页，共有"+result.extend.pageInfo.pageSize+"页,总共有"+result.extend.pageInfo.total+"条")
+	 		$("#table_page_left").append("当前第"+result.extend.pageInfo.pageNum+"页，共有"+result.extend.pageInfo.pages+"页,总共有"+result.extend.pageInfo.total+"条")
 	 		//此处犯了一个错误，在 currentPage声明好的变量前又加了一次var错误
 	 		currentPage=result.extend.pageInfo.pageNum;
 	 	}
@@ -253,7 +257,7 @@
 			//发送ajax请求删除
 			if(confirm("确认删除"+name+"吗！")){
 				$.ajax({
-					url:"${app_path}/json/"+id,
+					url:"${app_path}/view/json/"+id,
 					type:"DELETE",
 					success:function(result){
 						//对删除操作做出信息反馈
@@ -285,7 +289,7 @@
 		//查询信息显示在模态框总
 		function getPer(id){
 			$.ajax({
-				url:"${app_path}/emy/"+id,
+				url:"${app_path}/view/emy/"+id,
 				type:"GET",
 				success:function(result){
 					console.log(result);
@@ -303,7 +307,7 @@
 		$("#edit_person").click(function(){
 			var id=$(this).attr("edit-id");
 			$.ajax({
-				url:"${app_path}/edit/"+id,
+				url:"${app_path}/view/edit/"+id,
 				type:"GET",
 				//表单序列化
 				data:$("#updateModal form").serialize(),
@@ -318,7 +322,7 @@
 
 	function getDepts(){
 		$.ajax({
-			url:"${app_path}/dept",
+			url:"${app_path}/view/dept",
 			type:"GET",
 			success:function(result){
 				//console.log(result);

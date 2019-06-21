@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+  <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/exporting.js"></script>
+  <script>
+    $(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: '每个月的25号统计人数'
+        },
+        subtitle: {
+            text: '公司部门人数变动一览表'
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: '人数（numbers）'
+            }
+        },
+        tooltip: {
+            enabled: false,
+            formatter: function() {
+                return '<b>'+ this.series.name +'</b>'+this.x +': '+ this.y +'¡ãC';
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: '人事部',
+            data: [9, 6, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9]
+        },
+        { 	name:'安全部',
+        	data:[19, 6, 9, 14, 18, 7, 25, 26, 23, 1, 13, 9]
+        },
+         { 	name:'开发部',
+        	data:[1, 16, 5, 14, 18, 7, 25, 5, 23, 18, 13, 9]
+        },
+         { 	name:'测试部',
+        	data:[3, 6, 9, 14, 4, 7, 25, 5, 23, 18, 13, 9]
+        },
+         {
+            name: '研发部',
+            data: [9, 4, 5, 8, 1, 15, 7, 16, 2, 10, 6, 4]
+        }]
+    });
+});
+  </script>
+</head>
+<body>
+  <div id="container" style="min-width:700px;height:400px"></div>
+</body>
+</html>

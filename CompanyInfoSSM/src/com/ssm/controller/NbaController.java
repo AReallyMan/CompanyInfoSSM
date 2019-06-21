@@ -159,9 +159,7 @@ public class NbaController {
 	public Msg queryById(@PathVariable("id") int id) {
 		NbaPerson nbaPerson = nbaService.queryByid(id);
 		return Msg.success().add("person", nbaPerson);
-		
 	}
-	
 	@ResponseBody
 	@RequestMapping("/dept")
 	public Msg depts() {
